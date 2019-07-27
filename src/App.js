@@ -28,8 +28,8 @@
 
 
 import React, {Component} from 'react';
-import Table from './table'
-
+import Table from './table';
+import Form from './form';
 
 // class App extends Component{
 //  render(){
@@ -46,24 +46,7 @@ import Table from './table'
 
 class App extends Component {
     state = {
-        characters: [
-          {
-            name: 'Charlie',
-            job: 'Janitor',
-          },
-          {
-            name: 'Mac',
-            job: 'Bouncer',
-          },
-          {
-            name: 'Dee',
-            job: 'Aspring actress',
-          },
-          {
-            name: 'Dennis',
-            job: 'Bartender',
-          },
-        ]
+        characters: [],
     };
 
     removeCharacter = index => {
@@ -76,9 +59,9 @@ class App extends Component {
         });
     }
 
-    // handleSubmit = character => {
-    //     this.setState({characters: [...this.state.characters, character]});
-    // }
+    handleSubmit = character => {
+        this.setState({characters: [...this.state.characters, character]});
+    }
 
     render() {
         const { characters } = this.state;
@@ -91,7 +74,7 @@ class App extends Component {
                     characterData={characters}
                     removeCharacter={this.removeCharacter} 
                 />
-
+                <Form handleSubmit={this.handleSubmit}/>
             </div>
         );
     }
